@@ -1,6 +1,8 @@
 package Views;
 
 import Controllers.CarController;
+import Observer.CarObservable;
+import Observer.CarObserver;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -8,6 +10,8 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -17,12 +21,13 @@ import java.awt.event.ActionListener;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JFrame implements CarObservable{
     private static final int X = 800;
     private static final int Y = 800;
 
     // The controller member
     private CarController carC;
+    List<CarObserver> observers = new ArrayList<>();
 
     public DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
@@ -141,7 +146,7 @@ public class CarView extends JFrame{
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.startEngine();
+                notifyObservers("startEngine");
             }
         });
 
@@ -187,5 +192,17 @@ public class CarView extends JFrame{
 
     public DrawPanel getDrawPanel() {
         return drawPanel;
+    }
+
+    @Override
+    public void notifyObservers(String notification) {
+        for (CarObserver observer : observers){
+            observer.update(notification);
+        }
+    }
+
+    @Override
+    public void addObserver(CarObserver carObserver) {
+        observers.add(carObserver);
     }
 }

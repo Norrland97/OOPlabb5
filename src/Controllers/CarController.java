@@ -1,5 +1,6 @@
 package Controllers;
 
+import Observer.CarObserver;
 import Views.*;
 import Models.*;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class CarController implements CarObserver{
 
     // member fields:
 
@@ -51,9 +52,16 @@ public class CarController {
 
         // Start a new view and send a reference of self
         frame = new CarView("CarSim 1.0", this);
+        frame.addObserver(this);
 
         // Start the timer
         timer.start();
+    }
+
+    @Override
+    public void update(String notification) {
+        if (notification == "startEngine")
+            startEngine();
     }
 
     /**
