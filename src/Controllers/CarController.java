@@ -73,8 +73,8 @@ public class CarController implements CarObserver{
                 brake(frame.getSpeedAmount());
                 break;
             case "addCar":
-                frame.drawPanel.addCarImage();
                 CarModel.addVolvo();
+                frame.drawPanel.addCarImage(CarModel.getCars().get(CarModel.getCars().size()-1));
                 break;
             case "removeCar":
                 removeCar();
