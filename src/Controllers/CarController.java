@@ -36,7 +36,7 @@ public class CarController implements CarObserver{
         // Instance of this class
 
         // Start a new view and send a reference of self
-        frame = new CarView("CarSim 1.0");
+        frame = new CarView("CarSim 1.0", CarModel.getVehicles());
         frame.addObserver(this);
 
         // Start the timer

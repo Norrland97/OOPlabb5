@@ -13,6 +13,14 @@ public class CarModel {
         return newCars;
     }
 
+    public static List<Vehicle> getVehicles(){
+        List<Vehicle> vehicles = new ArrayList<>();
+        for (Car c: cars){
+            vehicles.add(c);
+        }
+        return vehicles;
+    }
+
     public static void addSaab(){
         carModelAddCar(VehicleFactory.createSaab95());
     }

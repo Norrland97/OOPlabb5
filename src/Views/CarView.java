@@ -1,5 +1,6 @@
 package Views;
 
+import Models.Vehicle;
 import Observer.CarObservable;
 import Observer.CarObserver;
 
@@ -26,7 +27,7 @@ public class CarView extends JFrame implements CarObservable{
 
     List<CarObserver> observers = new ArrayList<>();
 
-    public DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    public DrawPanel drawPanel;
 
     private JPanel controlPanel = new JPanel();
 
@@ -49,7 +50,8 @@ public class CarView extends JFrame implements CarObservable{
     private JButton removeCarButton = new JButton("Remove car");
 
     // Constructor
-    public CarView(String framename){
+    public CarView(String framename, List<Vehicle> vehicles){
+        drawPanel = new DrawPanel(X, Y-240, vehicles);
         initComponents(framename);
     }
 
