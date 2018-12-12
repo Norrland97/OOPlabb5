@@ -39,9 +39,6 @@ public class CarController implements CarObserver{
     public void initCarcontroller() {
         // Instance of this class
 
-
-
-
         int offset = 0;
 
         for(Car car : cars){
