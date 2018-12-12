@@ -114,7 +114,7 @@ public class CarView extends JFrame implements CarObservable{
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.setTurboOn();
+                notifyObservers("setTurboOn");
             }
         });
 
@@ -122,7 +122,7 @@ public class CarView extends JFrame implements CarObservable{
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.setTurboOff();
+                notifyObservers("setTurboOff");
             }
         });
 
@@ -130,7 +130,7 @@ public class CarView extends JFrame implements CarObservable{
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.lowerScaniaFlatBed();
+                notifyObservers("lowerFlatBed");
             }
         });
 
@@ -138,7 +138,7 @@ public class CarView extends JFrame implements CarObservable{
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.raiseScaniaFlatBed();
+                notifyObservers("raiseLiftBed");
             }
         });
 
@@ -154,7 +154,7 @@ public class CarView extends JFrame implements CarObservable{
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.stopAllCars();
+                notifyObservers("stopEngine");
             }
         });
 
@@ -171,7 +171,7 @@ public class CarView extends JFrame implements CarObservable{
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(speedAmount);
+                notifyObservers("brake");
             }
         });
 
