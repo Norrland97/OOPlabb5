@@ -11,8 +11,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Models.CarModel.carModelRemoveCar;
-
 /**
  * This class represents the Controller part in the MVC pattern.
  * It's responsibilities is to listen to the View and responds in a appropriate manner by
@@ -86,7 +84,7 @@ public class CarController implements CarObserver{
                 brake(frame.getSpeedAmount());
                 break;
             case "addCar":
-                // Add car
+                frame.drawPanel.addCarImage();
                 break;
             case "removeCar":
                 removeCar();
@@ -241,7 +239,7 @@ public class CarController implements CarObserver{
     }
 
     private void removeCar(){
-        carModelRemoveCar();
+        CarModel.carModelRemoveCar();
     }
 
 }

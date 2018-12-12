@@ -92,4 +92,14 @@ public class DrawPanel extends JPanel {
             vehicleImages.remove(lastKey);
         }
     }
+
+    public void addCarImage(){
+        if (vehicleImages.size() < 9){
+            try {
+                vehicleImages.put("Volvo240", ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Volvo240.jpg")));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }
