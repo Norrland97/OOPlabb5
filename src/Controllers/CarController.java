@@ -157,7 +157,6 @@ public class CarController implements CarObserver{
         double gas = ((double) amount) / 100;
         for (Car car : carModel.getCars()) {
             car.gas(gas);
-            System.out.println(car);
         }
     }
 

@@ -7,7 +7,7 @@ public class CarModel {
     private static List<Car> cars = new ArrayList<>();
 
     public static List<Car> getCars(){
-        List<Car> newCars = cars;//new ArrayList<>(cars);
+        List<Car> newCars = new ArrayList<>(cars); //Sends a copy of the list with cars ;)
         return newCars;
     }
 
