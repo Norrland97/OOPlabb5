@@ -85,6 +85,9 @@ public class CarController implements CarObserver{
             case "brake":
                 brake(frame.getSpeedAmount());
                 break;
+            default:
+                System.out.println("Button not connected to action");
+                break;
         }
     }
 
@@ -137,7 +140,7 @@ public class CarController implements CarObserver{
     /**
      * Calls the start engine method for each car once
      */
-    public void startEngine() {
+    private void startEngine() {
         for (Car car : carModel.getCars())
             car.startEngine();
     }
@@ -145,7 +148,7 @@ public class CarController implements CarObserver{
     /**
      * Calls the stop engine method for each car once
      */
-    public void stopAllCars() {
+    private void stopAllCars() {
         for (Car car : carModel.getCars())
             car.stopEngine();
     }
@@ -153,7 +156,7 @@ public class CarController implements CarObserver{
     /**
      * Calls the gas method for each car once
      */
-    public void gas(int amount) {
+    private void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Car car : carModel.getCars()) {
             car.gas(gas);
@@ -163,7 +166,7 @@ public class CarController implements CarObserver{
     /**
      * Calls the brake method for each car once
      */
-    public void brake(int amount) {
+    private void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Car car : carModel.getCars()) {
             car.brake(brake);
@@ -173,7 +176,7 @@ public class CarController implements CarObserver{
     /**
      * Calls the set turbo on method for each Models.Saab95 once
      */
-    public void setTurboOn() {
+    private void setTurboOn() {
         for (Car c : carModel.getCars()) {
             if (c.toString().equals("Saab95")) {
                 Saab95 s = (Saab95) c;
@@ -185,7 +188,7 @@ public class CarController implements CarObserver{
     /**
      * Calls the set turbo off method for each Models.Saab95 once
      */
-    public void setTurboOff() {
+    private void setTurboOff() {
         for (Car c : carModel.getCars()) {
             if (c.toString().equals("Saab95")) {
                 Saab95 s = (Saab95) c;
@@ -197,7 +200,7 @@ public class CarController implements CarObserver{
     /**
      * Calls the lower bed angle method for each Models.Scania once
      */
-    public void lowerScaniaFlatBed() {
+    private void lowerScaniaFlatBed() {
         for (Car c : carModel.getCars()) {
             if (c.toString().equals("Scania")) {
                 Scania s = (Scania) c;
@@ -210,7 +213,7 @@ public class CarController implements CarObserver{
     /**
      * Calls the raise bed angle method for each Models.Scania once
      */
-    public void raiseScaniaFlatBed() {
+    private void raiseScaniaFlatBed() {
         for (Car c : carModel.getCars()) {
             if (c.toString().equals("Scania")) {
                 Scania s = (Scania) c;
