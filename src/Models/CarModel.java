@@ -23,10 +23,9 @@ public class CarModel {
         cars.add(VehicleFactory.createScania());
     }
 
-    public static void removeCar(){
-
+    public static void carModelRemoveCar(){
         if (cars.size() > 0)
-            cars.remove(0);
+            cars.remove(cars.size()-1);
     }
 
 }

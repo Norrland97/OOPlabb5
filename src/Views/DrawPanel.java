@@ -87,7 +87,9 @@ public class DrawPanel extends JPanel {
     }
 
     public void removeCarImage(){
-        Object key = vehicleImages.keySet().iterator().next();
-        vehicleImages.remove(key);
+        if (vehicleImages.size() > 0){
+            Object lastKey = new ArrayList<>(vehicleImages.keySet()).get(vehicleImages.size() - 1);
+            vehicleImages.remove(lastKey);
+        }
     }
 }
