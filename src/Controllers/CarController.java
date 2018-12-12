@@ -29,8 +29,6 @@ public class CarController implements CarObserver{
 
     // The frame that represents this instance View of the MVC pattern
     private CarView frame;
-    // A list of cars, modify if needed
-    CarModel carModel;
     //List<Car> cars = new ArrayList<>();
     // An object that handles all creation of Vehicles.
     private VehicleFactory factory = new VehicleFactory();
@@ -42,7 +40,7 @@ public class CarController implements CarObserver{
 
         int offset = 0;
 
-        for(Car car : carModel.getCars()){
+        for(Car car : CarModel.getCars()){
             car.getCurrentPos().setY(offset);
             offset = offset + 100;
         }
@@ -97,7 +95,7 @@ public class CarController implements CarObserver{
      */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : carModel.getCars()) {
+            for (Car car : CarModel.getCars()) {
                 car.move();
                 if(isOutOfBounds(car)){
                     inverseDirection(car);
@@ -141,7 +139,7 @@ public class CarController implements CarObserver{
      * Calls the start engine method for each car once
      */
     private void startEngine() {
-        for (Car car : carModel.getCars())
+        for (Car car : CarModel.getCars())
             car.startEngine();
     }
 
@@ -149,7 +147,7 @@ public class CarController implements CarObserver{
      * Calls the stop engine method for each car once
      */
     private void stopAllCars() {
-        for (Car car : carModel.getCars())
+        for (Car car : CarModel.getCars())
             car.stopEngine();
     }
 
@@ -158,7 +156,7 @@ public class CarController implements CarObserver{
      */
     private void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : carModel.getCars()) {
+        for (Car car : CarModel.getCars()) {
             car.gas(gas);
         }
     }
@@ -168,7 +166,7 @@ public class CarController implements CarObserver{
      */
     private void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Car car : carModel.getCars()) {
+        for (Car car : CarModel.getCars()) {
             car.brake(brake);
         }
     }
@@ -177,7 +175,7 @@ public class CarController implements CarObserver{
      * Calls the set turbo on method for each Models.Saab95 once
      */
     private void setTurboOn() {
-        for (Car c : carModel.getCars()) {
+        for (Car c : CarModel.getCars()) {
             if (c.toString().equals("Saab95")) {
                 Saab95 s = (Saab95) c;
                 s.setTurboOn();
@@ -189,7 +187,7 @@ public class CarController implements CarObserver{
      * Calls the set turbo off method for each Models.Saab95 once
      */
     private void setTurboOff() {
-        for (Car c : carModel.getCars()) {
+        for (Car c : CarModel.getCars()) {
             if (c.toString().equals("Saab95")) {
                 Saab95 s = (Saab95) c;
                 s.setTurboOff();
@@ -201,7 +199,7 @@ public class CarController implements CarObserver{
      * Calls the lower bed angle method for each Models.Scania once
      */
     private void lowerScaniaFlatBed() {
-        for (Car c : carModel.getCars()) {
+        for (Car c : CarModel.getCars()) {
             if (c.toString().equals("Scania")) {
                 Scania s = (Scania) c;
                 for (int i = 0; i < 70; i++)
@@ -214,7 +212,7 @@ public class CarController implements CarObserver{
      * Calls the raise bed angle method for each Models.Scania once
      */
     private void raiseScaniaFlatBed() {
-        for (Car c : carModel.getCars()) {
+        for (Car c : CarModel.getCars()) {
             if (c.toString().equals("Scania")) {
                 Scania s = (Scania) c;
                 for (int i = 0; i < 70; i++)

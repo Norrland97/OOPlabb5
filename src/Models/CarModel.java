@@ -3,7 +3,7 @@ package Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarModel {
+public abstract class CarModel {
     private static List<Car> cars = new ArrayList<>();
 
     public static List<Car> getCars(){
