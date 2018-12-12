@@ -3,7 +3,7 @@ package Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class CarModel {
+public class CarModel {
     private static List<Car> cars = new ArrayList<>();
 
     public static List<Car> getCars(){
@@ -24,6 +24,7 @@ public abstract class CarModel {
     }
 
     public static void removeCar(){
+
         if (cars.size() > 0)
             cars.remove(0);
     }

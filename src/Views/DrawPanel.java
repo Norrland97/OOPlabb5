@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -20,7 +21,7 @@ import javax.swing.*;
 public class DrawPanel extends JPanel {
 
     // Just a single image, TODO: Generalize fixa en satans HashMap JUH :D
-    HashMap<String, BufferedImage> vehicleImages = new HashMap<>();
+    HashMap<String, BufferedImage> vehicleImages = new LinkedHashMap<>();
     // To keep track of a singel cars position
     Position vehiclePoint = new Position();
 
@@ -83,5 +84,10 @@ public class DrawPanel extends JPanel {
             int y = (int) Math.round(v.getCurrentPos().getY());
             g.drawImage(vehicleImages.get(v.toString()), x, y, null); // see javadoc for more info on the parameters
         }
+    }
+
+    public void removeCarImage(){
+        Object key = vehicleImages.keySet().iterator().next();
+        vehicleImages.remove(key);
     }
 }

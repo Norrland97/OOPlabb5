@@ -88,6 +88,7 @@ public class CarController implements CarObserver{
                 break;
             case "removeCar":
                 removeCar();
+                frame.drawPanel.removeCarImage();
                 break;
             default:
                 System.out.println("Button not connected to action");
@@ -238,7 +239,8 @@ public class CarController implements CarObserver{
     }
 
     private void removeCar(){
-        CarModel.removeCar();
+        CarModel model = new CarModel();
+        model.removeCar();
     }
 
 }
