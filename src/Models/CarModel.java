@@ -11,7 +11,7 @@ public class CarModel {
         return newCars;
     }
 
-    public static void addSaab(Car car){
+    public static void addSaab(){
         cars.add(VehicleFactory.createSaab95());
     }
 
