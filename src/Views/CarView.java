@@ -1,6 +1,5 @@
 package Views;
 
-import Controllers.CarController;
 import Observer.CarObservable;
 import Observer.CarObserver;
 
@@ -25,8 +24,6 @@ public class CarView extends JFrame implements CarObservable{
     private static final int X = 800;
     private static final int Y = 800;
 
-    // The controller member
-    private CarController carC;
     List<CarObserver> observers = new ArrayList<>();
 
     public DrawPanel drawPanel = new DrawPanel(X, Y-240);
@@ -49,9 +46,12 @@ public class CarView extends JFrame implements CarObservable{
     private JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc){
-        this.carC = cc;
+    public CarView(String framename){
         initComponents(framename);
+    }
+
+    public int getSpeedAmount() {
+        return speedAmount;
     }
 
     // Sets everything in place and fits everything
@@ -138,7 +138,7 @@ public class CarView extends JFrame implements CarObservable{
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                notifyObservers("raiseLiftBed");
+                notifyObservers("raiseFlatBed");
             }
         });
 
@@ -163,7 +163,7 @@ public class CarView extends JFrame implements CarObservable{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(speedAmount);
+                notifyObservers("gas");
             }
         });
 

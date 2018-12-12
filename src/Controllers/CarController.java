@@ -48,7 +48,7 @@ public class CarController implements CarObserver{
 
 
         // Start a new view and send a reference of self
-        frame = new CarView("CarSim 1.0", this);
+        frame = new CarView("CarSim 1.0");
         frame.addObserver(this);
 
         // Start the timer
@@ -57,8 +57,34 @@ public class CarController implements CarObserver{
 
     @Override
     public void update(String notification) {
-        if (notification == "startEngine")
-            startEngine();
+
+        switch (notification)
+        {
+            case "setTurboOn":
+                setTurboOn();
+                break;
+            case "setTurboOff":
+                setTurboOff();
+                break;
+            case "lowerFlatBed":
+                lowerScaniaFlatBed();
+                break;
+            case "raiseFlatBed":
+                raiseScaniaFlatBed();
+                break;
+            case "startEngine":
+                startEngine();
+                break;
+            case "stopEngine":
+                stopAllCars();
+                break;
+            case "gas":
+                gas(frame.getSpeedAmount());
+                break;
+            case "brake":
+                brake(frame.getSpeedAmount());
+                break;
+        }
     }
 
     /**
