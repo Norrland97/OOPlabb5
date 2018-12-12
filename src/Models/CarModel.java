@@ -22,4 +22,10 @@ public abstract class CarModel {
     public static void addScania(){
         cars.add(VehicleFactory.createScania());
     }
+
+    public static void removeCar(){
+        if (cars.size() > 0)
+            cars.remove(0);
+    }
+
 }

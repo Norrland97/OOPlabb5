@@ -83,6 +83,12 @@ public class CarController implements CarObserver{
             case "brake":
                 brake(frame.getSpeedAmount());
                 break;
+            case "addCar":
+                // Add car
+                break;
+            case "removeCar":
+                removeCar();
+                break;
             default:
                 System.out.println("Button not connected to action");
                 break;
@@ -229,6 +235,10 @@ public class CarController implements CarObserver{
         for (int i = 0; i < 4; i++) {
             car.turnLeft();
         }
+    }
+
+    private void removeCar(){
+        CarModel.removeCar();
     }
 
 }

@@ -45,6 +45,9 @@ public class CarView extends JFrame implements CarObservable{
     private JButton startButton = new JButton("Start all cars");
     private JButton stopButton = new JButton("Stop all cars");
 
+    private JButton addCarButton = new JButton("Add car");
+    private JButton removeCarButton = new JButton("Remove car");
+
     // Constructor
     public CarView(String framename){
         initComponents(framename);
@@ -92,6 +95,8 @@ public class CarView extends JFrame implements CarObservable{
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarButton, 6);
+        controlPanel.add(removeCarButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -172,6 +177,22 @@ public class CarView extends JFrame implements CarObservable{
             @Override
             public void actionPerformed(ActionEvent e) {
                 notifyObservers("brake");
+            }
+        });
+
+        // Add a car to the frame
+        addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                notifyObservers("addCar");
+            }
+        });
+
+        // Remove a car from the frame
+        removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                notifyObservers("removeCar");
             }
         });
 
