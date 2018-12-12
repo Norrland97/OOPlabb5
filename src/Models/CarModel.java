@@ -6,26 +6,36 @@ import java.util.List;
 public class CarModel {
     private static List<Car> cars = new ArrayList<>();
 
+    private static int offset = 0;
+
     public static List<Car> getCars(){
         List<Car> newCars = new ArrayList<>(cars); //Sends a copy of the list with cars ;)
         return newCars;
     }
 
     public static void addSaab(){
-        cars.add(VehicleFactory.createSaab95());
+        carModelAddCar(VehicleFactory.createSaab95());
     }
 
     public static void addVolvo(){
-        cars.add(VehicleFactory.createVolvo240());
+        carModelAddCar(VehicleFactory.createVolvo240());
     }
 
     public static void addScania(){
-        cars.add(VehicleFactory.createScania());
+        carModelAddCar(VehicleFactory.createScania());
+    }
+
+    public static void carModelAddCar(Car car){
+        cars.add(car);
+        car.getCurrentPos().setY(offset);
+        offset = offset + 100;
     }
 
     public static void carModelRemoveCar(){
-        if (cars.size() > 0)
-            cars.remove(cars.size()-1);
+        if (cars.size() > 0) {
+            cars.remove(cars.size() - 1);
+            offset = offset - 100;
+        }
     }
 
 }

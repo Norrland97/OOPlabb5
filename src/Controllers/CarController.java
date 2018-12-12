@@ -5,11 +5,8 @@ import Views.*;
 import Models.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class represents the Controller part in the MVC pattern.
@@ -37,14 +34,6 @@ public class CarController implements CarObserver{
 
     public void initCarcontroller() {
         // Instance of this class
-
-        int offset = 0;
-
-        for(Car car : CarModel.getCars()){
-            car.getCurrentPos().setY(offset);
-            offset = offset + 100;
-        }
-
 
         // Start a new view and send a reference of self
         frame = new CarView("CarSim 1.0");
@@ -85,6 +74,7 @@ public class CarController implements CarObserver{
                 break;
             case "addCar":
                 frame.drawPanel.addCarImage();
+                CarModel.addVolvo();
                 break;
             case "removeCar":
                 removeCar();

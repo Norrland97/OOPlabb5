@@ -2,6 +2,7 @@ package Views;
 
 import Models.Position;
 import Models.Vehicle;
+import Models.VehicleFactory;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -21,7 +22,7 @@ import javax.swing.*;
 public class DrawPanel extends JPanel {
 
     // Just a single image, TODO: Generalize fixa en satans HashMap JUH :D
-    HashMap<String, BufferedImage> vehicleImages = new LinkedHashMap<>();
+    HashMap<Vehicle, BufferedImage> vehicleImages = new LinkedHashMap<>();
     // To keep track of a singel cars position
     Position vehiclePoint = new Position();
 
@@ -56,9 +57,9 @@ public class DrawPanel extends JPanel {
                // BufferedImage vehicleImage = ImageIO.read(new File(getFilePath(vehicle)));
                // vehicleImages.put(vehicle.toString(), vehicleImage);
             //}
-            vehicleImages.put("Volvo240", ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Volvo240.jpg")));
-            vehicleImages.put("Saab95", ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Saab95.jpg")));
-            vehicleImages.put("Scania", ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Scania.jpg")));
+            vehicleImages.put(VehicleFactory.createVolvo240(), ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Volvo240.jpg")));
+            vehicleImages.put(VehicleFactory.createSaab95(), ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Saab95.jpg")));
+            vehicleImages.put(VehicleFactory.createScania(), ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Scania.jpg")));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -96,7 +97,7 @@ public class DrawPanel extends JPanel {
     public void addCarImage(){
         if (vehicleImages.size() < 9){
             try {
-                vehicleImages.put("Volvo240", ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Volvo240.jpg")));
+                vehicleImages.put(VehicleFactory.createVolvo240(), ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Volvo240.jpg")));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
