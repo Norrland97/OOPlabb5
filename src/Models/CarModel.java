@@ -37,12 +37,16 @@ public class CarModel {
         cars.add(car);
         car.getCurrentPos().setY(offset);
         offset = offset + 100;
+        if (offset > 1000)
+            offset = 1000;
     }
 
     public static void carModelRemoveCar(){
         if (cars.size() > 0) {
             cars.remove(cars.size() - 1);
             offset = offset - 100;
+            if (offset < 0)
+                offset = 0;
         }
     }
 

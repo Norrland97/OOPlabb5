@@ -92,16 +92,18 @@ public class DrawPanel extends JPanel {
         if (vehicleImages.size() > 0) {
             Object lastKey = new ArrayList<>(vehicleImages.keySet()).get(vehicleImages.size() - 1);
             vehicleImages.remove(lastKey);
-        }
+        } else
+            System.out.println("No cars to remove.");
     }
 
     public void addCarImage(Vehicle vehicle) {
-        if (vehicleImages.size() < 9) {
+        if (vehicleImages.size() < 10) {
             try {
                 vehicleImages.put(vehicle, ImageIO.read(new File("src" + File.separator + "pics" + File.separator + "Volvo240.jpg")));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-        }
+        } else
+            System.out.println("Maximum number of cars reached.");
     }
 }

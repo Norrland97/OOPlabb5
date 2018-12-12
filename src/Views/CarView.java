@@ -22,8 +22,8 @@ import java.util.ArrayList;
  **/
 
 public class CarView extends JFrame implements CarObservable{
-    private static final int X = 800;
-    private static final int Y = 800;
+    private static final int X = 1500;
+    private static final int Y = 1500;
 
     List<CarObserver> observers = new ArrayList<>();
 
