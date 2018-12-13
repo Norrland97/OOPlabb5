@@ -1,8 +1,8 @@
 package Views;
 
+import Models.CarModel;
 import Models.Position;
 import Models.Vehicle;
-import Models.VehicleFactory;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -21,40 +21,27 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel {
 
-    // Just a single image, TODO: Generalize fixa en satans HashMap JUH :D
-    HashMap<Vehicle, BufferedImage> vehicleImages = new LinkedHashMap<>();
+    private HashMap<Vehicle, BufferedImage> vehicleImages = new LinkedHashMap<>();
     // To keep track of a singel cars position
-    Position vehiclePoint = new Position();
+    private Position point = new Position();
 
-    private List<Vehicle> vehicles;
-
-    // TODO: Make this genereal for all cars (typ gå igenom en lista med alla bilar och kolla deras position...)
     public void moveit(int x, int y) {
-        vehiclePoint.setX(x);
-        vehiclePoint.setY(y);
-    }
-
-    public List<Vehicle> getVehicles() {
-        return vehicles;
-    }
-
-    public void setVehicles(List<Vehicle> vehicles) {
-        this.vehicles = vehicles;
+        point.setX(x);
+        point.setY(y);
     }
 
     /**
      * Initializes the panel and reads the images
      */
-    public DrawPanel(int x, int y, List<Vehicle> vehicles) {
+    DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.white);
-        this.vehicles = vehicles;
 
         //print an error message in case file is not found with a try/catch block
 
         try {
-            for (Models.Vehicle vehicle : vehicles) {
+            for (Models.Vehicle vehicle : CarModel.getCars()) {
                 BufferedImage vehicleImage = ImageIO.read(new File(getFilePath(vehicle)));
                 vehicleImages.put(vehicle, vehicleImage);
             }
@@ -75,12 +62,12 @@ public class DrawPanel extends JPanel {
     /**
      * This method is called each time the panel updates/refreshes/repaints itself
      */
-    // TODO: Change to suit your needs.
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (Vehicle vehicle : vehicles) {
+        for (Vehicle vehicle : CarModel.getCars()) {
             //Models.Vehicle v = vehicles.get(i);
             int x = (int) Math.round(vehicle.getCurrentPos().getX());
             int y = (int) Math.round(vehicle.getCurrentPos().getY());

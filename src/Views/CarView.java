@@ -50,8 +50,8 @@ public class CarView extends JFrame implements CarObservable{
     private JButton removeCarButton = new JButton("Remove car");
 
     // Constructor
-    public CarView(String framename, List<Vehicle> vehicles){
-        drawPanel = new DrawPanel(X, Y-240, vehicles);
+    public CarView(String framename){
+        drawPanel = new DrawPanel(X, Y-240);
         initComponents(framename);
     }
 

@@ -36,7 +36,7 @@ public class CarController implements CarObserver{
         // Instance of this class
 
         // Start a new view and send a reference of self
-        frame = new CarView("CarSim 1.0", CarModel.getVehicles());
+        frame = new CarView("CarSim 1.0");
         frame.addObserver(this);
 
         // Start the timer
@@ -97,8 +97,7 @@ public class CarController implements CarObserver{
                 if(isOutOfBounds(car)){
                     inverseDirection(car);
                 }
-                //TODO fixa som metod och gå igenom varje bil!
-                frame.getDrawPanel().getVehicles().add(car);
+                
                 frame.drawPanel.moveit((int)car.getCurrentPos().getX(),(int)car.getCurrentPos().getY());
 
             }
