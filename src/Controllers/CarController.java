@@ -74,11 +74,11 @@ public class CarController implements CarObserver{
                 break;
             case "addCar":
                 CarModel.addVolvo();
-                frame.drawPanel.addCarImage(CarModel.getCars().get(CarModel.getCars().size()-1));
+                frame.addCarImage(CarModel.getCars().get(CarModel.getCars().size()-1));
                 break;
             case "removeCar":
                 removeCar();
-                frame.drawPanel.removeCarImage();
+                frame.removeCarImage();
                 break;
             default:
                 System.out.println("Button not connected to action");

@@ -213,6 +213,14 @@ public class CarView extends JFrame implements CarObservable{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    public void addCarImage(Vehicle vehicle){
+        drawPanel.addCarImage(vehicle);
+    }
+
+    public void removeCarImage(){
+        drawPanel.removeCarImage();
+    }
+
     public DrawPanel getDrawPanel() {
         return drawPanel;
     }
