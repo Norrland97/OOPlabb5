@@ -97,7 +97,7 @@ public class CarController implements CarObserver{
                 if(isOutOfBounds(car)){
                     inverseDirection(car);
                 }
-                
+
                 frame.drawPanel.moveit((int)car.getCurrentPos().getX(),(int)car.getCurrentPos().getY());
 
             }

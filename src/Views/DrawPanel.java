@@ -38,17 +38,12 @@ public class DrawPanel extends JPanel {
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.white);
 
-        //print an error message in case file is not found with a try/catch block
-
         try {
             for (Models.Vehicle vehicle : CarModel.getCars()) {
                 BufferedImage vehicleImage = ImageIO.read(new File(getFilePath(vehicle)));
                 vehicleImages.put(vehicle, vehicleImage);
             }
-            // vehicleImages.put(VehicleFactory.createVolvo240(), ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Volvo240.jpg")));
-            // vehicleImages.put(VehicleFactory.createSaab95(), ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Saab95.jpg")));
-            // vehicleImages.put(VehicleFactory.createScania(), ImageIO.read(new File("src" + File.separator + "pics" + File.separator +"Scania.jpg")));
-        } catch (IOException ex) {
+            } catch (IOException ex) {
             ex.printStackTrace();
         }
 
@@ -68,7 +63,6 @@ public class DrawPanel extends JPanel {
         super.paintComponent(g);
 
         for (Vehicle vehicle : CarModel.getCars()) {
-            //Models.Vehicle v = vehicles.get(i);
             int x = (int) Math.round(vehicle.getCurrentPos().getX());
             int y = (int) Math.round(vehicle.getCurrentPos().getY());
             g.drawImage(vehicleImages.get(vehicle), x, y, null); // see javadoc for more info on the parameters
